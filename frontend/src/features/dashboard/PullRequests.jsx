@@ -16,7 +16,9 @@ const PullRequests = () => {
 
   const fetchCurrentUserRepos = async () => {
     try {
-      const res = await axios.get(`${githubUrl}/users/${user.username}/repos`);
+      const res = await axios.get(
+        `${githubUrl}/users/${user.username}/repos?per_page=100&sort=updated`
+      );
       setRepos(res.data);
     } catch (err) {
       console.log(err);
