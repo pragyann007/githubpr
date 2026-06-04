@@ -6,7 +6,7 @@ const DashboardLayout = () => {
     // 
   return (
     <div className='flex ' >
-        <div className='w-[19%] h-screen' >
+        <div className='w-[19%] h-screen fixed' >
         <Sidebar/>
         </div>
 
