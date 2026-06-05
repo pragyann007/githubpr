@@ -12,12 +12,14 @@ import AiCmts from './features/dashboard/AiCmts'
 import Fixes from './features/dashboard/Fixes'
 import SecurityScan from './features/dashboard/SecurityScan'
 import SinglePullRequest from './features/dashboard/SinglePullRequest'
+import GithubSetup from './features/common/GithubSetup'
 
 const App = () => {
   return (
  <>
  <Routes>
   <Route path='/' element={<Home/>}  />
+  <Route path='/setup' element={<GithubSetup/>} />
   <Route path='/register' element={<Register/>} />
 
  <Route element={<PrivateRoutes/>} >
