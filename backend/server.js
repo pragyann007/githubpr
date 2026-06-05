@@ -24,6 +24,7 @@ app.use(cors({
     credentials: true,
 }))
 connectDb()
+// errors are coming bt 
 
 export const gitHubApp = new App({
     appId: process.env.GITHUB_APP_ID,
@@ -37,14 +38,12 @@ export const gitHubApp = new App({
 
 app.post("/api/github/webhooks",express.raw({type:"application/json"}),async (req,res)=>{
     console.log("Received GitHub webhook request with headers:")
-    console.log(typeof req.body)
-console.log(req.body)
+
     try {
         console.log("Received GitHub webhook:", {
             id: req.headers["x-github-delivery"],
             name: req.headers["x-github-event"],
-            payload: req.body.toString("utf-8"),
-            signature: req.headers["x-hub-signature-256"],
+        
         })
         console.log("Verifying webhook signature...")
         await gitHubApp.webhooks.verifyAndReceive({
