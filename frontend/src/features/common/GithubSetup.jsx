@@ -15,6 +15,7 @@ const GithubSetup = () => {
     useEffect(()=>{
         if(searchParams.get("installation_id") && user && !loading){
             console.log(user.userId,searchParams.get("installation_id"));
+            // calling apiss
 
             sendInstallation()
         }
