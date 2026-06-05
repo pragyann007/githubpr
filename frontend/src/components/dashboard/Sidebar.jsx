@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import {
     GitPullRequest,
@@ -18,8 +18,11 @@ import {
  
 
 const Sidebar = () => {
+
+  const [activeId,setActiveId] = useState(1);
     const dashboardLinks = [
         {
+          id:1,
             name: "Dashboard",
             link: "/dashboard",
             description: "Overview of connected repositories and recent activity",
@@ -27,6 +30,7 @@ const Sidebar = () => {
 
         },
         {
+            id:2,
           name: "Pull Requests",
           link: "/pull-requests",
           description: "All PRs from connected repositories",
@@ -34,24 +38,28 @@ const Sidebar = () => {
         },
     
         {
+            id:3,
           name: "AI Review Summary",
           link: "/ai-summary",
           description: "AI-generated PR overview, risks, and insights",
           icon: <Sparkles/>
         },
         {
+            id:4,
           name: "Inline AI Comments",
           link: "/ai-comments",
           description: "Line-by-line AI feedback on code changes",
           icon: <MessageSquareText/>
         },
         {
+            id:5,
           name: "Diff Viewer",
           link: "/diff",
           description: "View code changes in unified or split diff mode",
           icon: <GitCompare/>
         },
         {
+            id:6,
           name: "Suggested Fixes",
           link: "/fixes",
           description: "AI-generated patch suggestions for issues",
@@ -59,6 +67,7 @@ const Sidebar = () => {
         },
         
         {
+            id:7,
           name: "Security Scan",
           link: "/security",
           description: "Detect vulnerabilities and unsafe patterns",
@@ -77,7 +86,12 @@ const Sidebar = () => {
             {
                 dashboardLinks.map((item,index)=>{
                     return(
-                        <Link className='text-white text-md text-semibold p-3 flex gap-4 rounded-2xl mt-6 hover:bg-blue-500/30 ' to={item.link} >
+                        <Link className={`text-white text-md text-semibold p-3 flex gap-4 rounded-2xl mt-6
+                          ${activeId===item.id && "bg-blue-500/100"}
+                        
+                        hover:bg-blue-500/30`} to={item.link}
+                        onClick={()=>setActiveId(item.id)}
+                        >
                          <span>
                             {item.icon}
                             </span>   

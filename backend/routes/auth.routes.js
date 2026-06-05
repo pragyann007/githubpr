@@ -107,6 +107,7 @@ authRouter.get("/github/callback", async (req, res) => {
 
     const token = jwt.sign(
       {
+        userId:saveUser._id ,
         id: user.id,
         username: user.username,
         email: user.email,
@@ -118,13 +119,13 @@ authRouter.get("/github/callback", async (req, res) => {
 
     res.cookie("token", token);
 
-    res.status(200).json({
-      message: "Authentication successful",
-      user,
-      token,
-    });
+    // res.status(200).json({
+    //   message: "Authentication successful",
+    //   user,
+    //   token,
+    // });
   
-    // res.redirect("http://localhost:5173")
+    res.redirect("http://localhost:5173")
   } catch (error) {
     console.error(
       "GitHub OAuth Error:",
