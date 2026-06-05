@@ -48,7 +48,7 @@ registerWebhooks()
 app.use("/api/github",githubRouter)
 
 
-app.post("/github/webhooks",express.raw({type:"application/json"}),async (req,res)=>{
+app.post("/api/github/webhooks",express.raw({type:"application/json"}),async (req,res)=>{
     try {
         console.log("Received GitHub webhook:", {
             id: req.headers["x-github-delivery"],
