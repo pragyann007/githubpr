@@ -4,6 +4,7 @@ import { gitHubApp } from "../server.js";
 
 export const registerWebhooks = async ()=>{
     gitHubApp.webhooks.on("pull_request.opened",async({octokit,payload})=>{
+        console.log("Pull request opened event received with payload:", payload);
         const {pull_request:pr,repository,installation} = payload;
     
         const owner = repository.owner.login;
